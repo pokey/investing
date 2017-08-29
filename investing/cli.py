@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
 
-"""Console script for investing."""
+"""
+Console script for investing.
+
+Use exported unrealized gains / losses csv as input, making sure to first strip
+header and footer row if necessary.
+
+"""
 
 import locale
 from functools import partial
@@ -14,11 +20,7 @@ def to_numeric(s):
 
 
 @click.command()
-@click.option(
-    '--unrealized',
-    '-u',
-    type=click.File('r'),
-)
+@click.argument('unrealized', type=click.File('r'))
 def main(unrealized):
     """Console script for investing."""
     # Locale formatting init
